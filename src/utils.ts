@@ -20,3 +20,9 @@ export async function setAPIKey(context: vscode.ExtensionContext) {
   await context.secrets.store("CONTEXTUALRECOMMENDATIONAI_API_KEY", APIKey || "");
   vscode.window.showInformationMessage("API Key set");
 }
+
+async function verifyAPIKey(APIKey: string) {
+  const model = new GoogleGenerativeAI(APIKey || "").getGenerativeModel({ model: "gemini-2.0-flash" });
+  const result = await model.generateContent("Hello World!");
+  console.log(result.response.text());
+}
