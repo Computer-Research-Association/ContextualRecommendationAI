@@ -14,5 +14,3 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
-
-a; lsdkjfa; lsdkjfa; sldkjf, mcxnzvz., xmcvnz, mxalksjdf; alksruiqpwoieurqpowieurjjkfa; sldkfja; lskdjfv, z.xcmv / z., xcmva; lskdjfa; lskdjflsdkfj; lkdfjksdjfkdjfkdjfslkdjkdkdkdkdkd; alksdfja; lskdjfa; sldkjjfa; slkdfja;lskdjfjurqpoiweurqpowieurqpwoeiruqpowieruqwpoeiru
