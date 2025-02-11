@@ -1,16 +1,38 @@
 import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand(
-    "extension.helloWorld",
-    () => {
-      vscode.window.showInformationMessage(
-        "Hello World from extension!"
-      );
-    }
-  );
+  let statusBarVisible = false;
+  let timeout: NodeJS.Timeout | undefined;
+  const statusTextArray = ["Ready🦹‍♀️", "Typing💬"];
+  const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
 
-  context.subscriptions.push(disposable);
+  statusBarItem.text = statusTextArray[0];
+  statusBarItem.show();
+
+  // 텍스트 변화 감지, 상태 표시줄 텍스트 변경
+  const onTextChanged = vscode.workspace.onDidChangeTextDocument(() => {
+    statusBarItem.text = statusTextArray[1];
+
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    // reset to default state after half a second of no typing
+    timeout = setTimeout(() => {
+      statusBarItem.text = statusTextArray[0];
+    }, 500);
+  });
+
+  // register statusBar toggle command
+  const toggleStatusBarCommand = vscode.commands.registerCommand("extension.toggleStatusBar", () => {
+    if (!statusBarVisible) {
+      statusBarItem.show();
+    } else {
+      statusBarItem.hide();
+    }
+  });
+
+  context.subscriptions.push(toggleStatusBarCommand, onTextChanged, statusBarItem);
 }
 
 export function deactivate() {}
