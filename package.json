@@ -7,17 +7,29 @@
     "vscode": "^1.97.0"
   },
   "categories": [
-    "Other"
+    "AI",
+    "Snippets"
   ],
+  "publisher": "Computer-Research-Association",
+  "contributors": [
+    {
+      "name": "chachaaa-23",
+      "url": "https://github.com/chachaaa-23"
+    },
+    {
+      "name": "Jangmyun",
+      "url": "https://github.com/Jangmyun"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Computer-Research-Association/ContextualRecommendationAI"
+  },
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "contexturalrecommendationai.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "commands": []
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -34,16 +46,19 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.97.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.97.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
-    "eslint": "^9.16.0",
-    "esbuild": "^0.24.0",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.7.2",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.5.0",
+    "typescript": "^5.7.2"
   }
 }
