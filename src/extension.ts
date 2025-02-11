@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  context.subscriptions.push(toggleStatusBarCommand, onTextChanged, statusBarItem);
+  context.subscriptions.push(onTextChanged, statusBarItem);
 }
 
 export function deactivate() {}
