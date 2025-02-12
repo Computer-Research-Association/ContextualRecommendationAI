@@ -14,11 +14,13 @@ export async function setAPIKey(context: vscode.ExtensionContext) {
   } catch (err) {
     vscode.window.showErrorMessage("Invalid API Key");
     console.error(err);
+    context.globalState.update("isValidGeminiAPIKey", false);
     return;
   }
 
   await context.secrets.store("CONTEXTUALRECOMMENDATIONAI_API_KEY", APIKey || "");
   vscode.window.showInformationMessage("API Key set");
+  context.globalState.update("isValidGeminiAPIKey", true);
 }
 
 async function verifyAPIKey(APIKey: string) {
