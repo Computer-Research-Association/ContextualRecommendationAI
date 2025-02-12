@@ -28,3 +28,7 @@ async function verifyAPIKey(APIKey: string) {
   const result = await model.generateContent("Hello World!");
   console.log(result.response.text());
 }
+
+export async function getAPIKey(context: vscode.ExtensionContext) {
+  return await context.secrets.get("CONTEXTUALRECOMMENDATIONAI_API_KEY");
+}
