@@ -54,7 +54,7 @@ export class CraCompletionProvider implements vscode.InlineCompletionItemProvide
 
       if (isSingleLine) {
       } else {
-        range = new vscode.Range(position, document.lineAt(position.line).range.end);
+        range = new vscode.Range(position, document.lineAt(position.line + 1).range.end);
       }
 
       // const inlineCompletionItem = new vscode.InlineCompletionItem(
