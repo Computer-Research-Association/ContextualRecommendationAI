@@ -1,3 +1,16 @@
+import * as vscode from "vscode";
+import { GoogleGenerativeAI, GenerativeModel } from "@google/generative-ai";
+import { GeminiClient } from "./GeminiClient";
+
+const Diff = require("diff");
+
+interface DiffType {
+  count: number;
+  added: boolean;
+  removed: boolean;
+  value: string;
+}
+
 export class CraCompletionProvider implements vscode.InlineCompletionItemProvider {
   private geminiClient: GeminiClient;
 
@@ -56,3 +69,21 @@ export class CraCompletionProvider implements vscode.InlineCompletionItemProvide
   }
 }
 
+type DiffPartType = "+" | "-" | "=";
+
+function diffPatternMatches(diffs: DiffType[], pattern: DiffPartType[]): boolean {
+  if (diffs.length !== pattern.length) {
+    return false;
+  }
+
+  for (let i = 0; i < diffs.length; i++) {
+    const diff = diffs[i];
+    const diffPartType: DiffPartType = !diff.added && !diff.removed ? "=" : diff.added ? "+" : "-";
+
+    if (diffPartType !== pattern[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
