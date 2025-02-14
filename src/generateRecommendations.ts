@@ -8,5 +8,5 @@ export function getCodeContext(document: vscode.TextDocument, position: vscode.P
   return `current code context: ${fullText}
   cursor position: Ln ${position.line + 1}, Col ${position.character + 1}|
   Based on the following ${document.languageId} code, suggest the following one most appropriate code fragment
-  with no backticks`;
+  without backticks`;
 }

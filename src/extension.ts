@@ -17,6 +17,7 @@ export async function activate(context: vscode.ExtensionContext) {
   let timeout: NodeJS.Timeout | undefined;
   const statusTextArray = ["Ready🦹‍♀️", "Typing💬"];
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+  statusBarItem.tooltip = "ContextualRecommendationAI";
   statusBarItem.text = statusTextArray[0];
   statusBarItem.show();
 
